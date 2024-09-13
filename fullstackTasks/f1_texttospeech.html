@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text Example</title>
+</head>
+<body>
+    <h1>Speech to Text Conversion</h1>
+    <button id="start-btn">Start Speaking</button>
+    <button id="stop-btn" disabled>Stop Speaking</button>
+    <p id="output">Your speech will appear here...</p>
+
+    <script>
+        // Check for browser compatibility
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (window.SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.interimResults = false; // Set to true for real-time results
+            recognition.lang = 'en-US'; // Set language for recognition
+
+            const startBtn = document.getElementById('start-btn');
+            const stopBtn = document.getElementById('stop-btn');
+            const output = document.getElementById('output');
+
+            // Start recognition on button click
+            startBtn.addEventListener('click', () => {
+                recognition.start();
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            });
+
+            // Stop recognition on button click
+            stopBtn.addEventListener('click', () => {
+                recognition.stop();
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            });
+
+            // When speech recognition results are available
+            recognition.addEventListener('result', (event) => {
+                const transcript = event.results[0][0].transcript;
+                output.textContent = transcript;
+            });
+
+            // When recognition ends
+            recognition.addEventListener('end', () => {
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            });
+
+            // Handle errors
+            recognition.addEventListener('error', (event) => {
+                console.error('Speech recognition error detected:', event.error);
+                output.textContent = `Error: ${event.error}`;
+            });
+
+        } else {
+            alert('Speech Recognition is not supported in your browser. Please use Google Chrome.');
+        }
+
+    </script>
+</body>
+</html>

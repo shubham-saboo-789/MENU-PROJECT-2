@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Flask WebApp</title>
+    <style>
+        #responseBox {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gemanai AI</h1>
+    <form id="inputForm">
+        <label for="userInput">Ask Anything:</label>
+        <input type="text" id="userInput" name="userInput" required>
+        <button type="submit">Submit</button>
+        <button type="button" id="voiceSearch">🎤 Voice Search</button>
+    </form>
+
+    <div id="responseBox"></div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('inputForm').onsubmit = function(event) {
+            event.preventDefault();  // Prevent the form from submitting the traditional way
+            var userInput = document.getElementById('userInput').value;
+
+            // Fetch API call to the Flask endpoint
+            fetch('/api/response?user_input=' + encodeURIComponent(userInput))
+                .then(response => response.json())
+                .then(data => {
+                    var responseBox = document.getElementById('responseBox');
+                    responseBox.style.display = 'block';
+                    responseBox.textContent = data.reply;
+                })
+                .catch(error => console.error('Error:', error));
+        };
+
+        // Handle voice search
+        document.getElementById('voiceSearch').onclick = function() {
+            var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                var transcript = event.results[0][0].transcript;
+                document.getElementById('userInput').value = transcript;
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error:', event.error);
+            };
+        };
+    </script>
+</body>
+</html>

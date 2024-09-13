@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shubham Saboo</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/baseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projectsStyle.css') }}">
+</head>
+
+<body>
+    <img src="{{ url_for('static', filename='img/menu.png') }}" alt="menu button" id="menu-icon">
+    <nav class="top-nav" id="menuBox">
+        <ul>
+            <li><a href="/">About me</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+        <a href="/#contactMe">
+            <button type="button">Contact Me</button>
+        </a>
+    </nav>
+
+    <div class="side-nav">
+        <a href="/">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="company logo" class="logo"
+                id="side-navLogo">
+        </a>
+        <a href="/projects" id="side-navDesc">SHUBHAM SABOO</a>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <!-- Python
+
+Send Email message using python code
+Send SMS message using python code
+Scrap top5 search results from google using the python code
+Find the current geo coordinates and location using the Python code 
+Convert text-to-audio using the python code
+Control volume of you laptop using python.
+Connect to your mobile and send sms from your mobile messaging app using python.
+Create a function to Send bulk email using python.
+Create a function to Send bulk email using python. -->
+
+
+        <div class="section4">
+            <h1>Projects</h1>
+        </div>
+        <div class="section3">
+            <div class="cards" id="card1">
+                <div class="cardImg" onclick="toggleCard(this)">
+                    <video src="{{ url_for('static', filename='img/sendmail.mp4') }}" autoplay muted loop></video>
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Send Email</p>
+                    <p class="cardDesc">This program will send an email to whoever you want to send an email to.</p>
+                </div>
+
+                <form class="cardForm" id="p1_form">
+                    <input type="email" id="p1_senderEmail" placeholder="Senders Email" required>
+                    <input type="password" id="p1_senderEmailPassword" placeholder="Senders Email Password (app password if 2F auth enabled)" required>
+
+                    <input type="email" id="p1_receiverEmail" placeholder="Receivers Email" required>
+                    <input type="text" id="p1_subject" placeholder="Subject" required>
+                    <textarea placeholder="Body" id="p1_body" required rows="5"></textarea>
+                    
+                    <button type="submit">Send Email</button>
+                    <div id="p1_result"></div>
+
+                </form>
+            </div>
+
+            <div class="cards" id="card2">
+                <div class="cardImg" onclick="toggleCard(this)">
+                    
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Send SMS</p>
+                    <p class="cardDesc">Send message using Python code</p>
+                </div>
+                <form class="cardForm" id="p2_form">
+                    <input type="password" id="p2_account_sid" name="TWILIO_ACCOUNT_SID" placeholder="TWILIO_ACCOUNT_SID" required>
+                    <input type="password" id="p2_auth_token" name="TWILIO_AUTH_TOKEN" placeholder="TWILIO_AUTH_TOKEN" required>
+                    <input type="tel" id="p2_twilio_no" name="TWILIO_PHONE_NUMBER" placeholder="TWILIO_PHONE_NUMBER" required>
+
+                    <input type="tel" id="p2_receivers_no" name="phone" placeholder="Receivers no. (with country code)" required>
+                    <textarea id="p2_message" placeholder="Message" name="body" required rows="5"></textarea>
+                    
+                    <button type="submit">Send</button>
+                    <div id="p2_result"></div>
+                </form>
+            </div>
+            
+            <!-- 
+            
+            <div class="cards" id="card3">
+                <div class="cardImg" onclick="toggleCard(this)">
+                    
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" name="search" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                </form>
+                <div id="resultMessage"></div>
+            </div>
+            
+            
+            <div class="cards" id="card4">
+                <div class="cardImg" onclick="toggleCard(this)">
+             
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Find Geo coordinates</p>
+                    <p class="cardDesc">
+                        Find the current geo coordinates and location using the Python code
+                    </p>
+                </div>
+                <form class="cardForm">
+                    <button type="submit">Find</button>
+                </form>
+                <div id="resultMessage"></div> 
+            </div>
+
+
+            <div class="cards" id="card5">
+                <div class="cardImg" onclick="toggleCard(this)">
+            
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Text to audio</p>
+                    <p class="cardDesc">
+                        Convert text-to-audio using the python code
+                    </p>
+                </div>
+                <form class="cardForm">
+                    <textarea placeholder="Text" name="text" required rows="5"></textarea>
+                    <button type="submit">Convert</button>
+                </form>
+            </div>
+
+
+            <div class="cards" id="card6">
+                <div class="cardImg" onclick="toggleCard(this)">
+                
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">control Volume</p>
+                    <p class="cardDesc">
+                        Control volume of you laptop using python.
+                    </p>
+                </div>
+                <form class="cardForm">
+                    <input type="range" name="volume" min="0" max="101" />
+                    <button type="submit">Set Volume</button>
+                </form>
+            </div>
+
+
+            <div class="cards" id="card7">
+                <div class="cardImg" onclick="toggleCard(this)">
+     
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Send SMS</p>
+                    <p class="cardDesc">
+                        Connect to your mobile and send sms from your mobile messaging app using python.
+                    </p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" name="IP" placeholder="You Mobile Public IP" required>
+                    <input type="text" name="isADB" placeholder="have you setup your ADB (y/n)" required>
+                    <input type="number" name="sendX" placeholder="Enter the X co-ordinate of Send Button">
+                    <input type="number" name="sendY" placeholder="Enter the Y co-ordinate of Send Button">
+
+                    <hr
+                        style="height:3px;border-width:0;color:rgb(170, 170, 170);border-radius: 1.5px;margin-top: 2rem;margin-bottom: 2rem;">
+
+                    <input type="tel" name="phone" placeholder="Receivers Phone no. (with country code)" required>
+                    <textarea placeholder="Message" name="body" required rows="5"></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+
+
+            <div class="cards" id="card8">
+                <div class="cardImg" onclick="toggleCard(this)">
+        
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Send Bulk Email</p>
+                    <p class="cardDesc">
+                        Create a function to Send bulk email using python.
+                    </p>
+                </div>
+                <form class="cardForm">
+
+                    <label for="credentials">Your credentials.json for the Google API:</label>
+                    <input type="file" id="credentials" name="credentials" accept=".json" />
+
+                    <input type="email" name="email" placeholder="Senders Email" required>
+                    <input type="email" name="email"
+                        placeholder="Senders Email Password (app password if 2F auth enabled)" required>
+
+                    <hr
+                        style="height:3px;border-width:0;color:rgb(170, 170, 170);border-radius: 1.5px;margin-top: 2rem;margin-bottom: 2rem;">
+
+                    <input type="text" name="SheetsID" placeholder="Enter Google Sheets ID" required>
+                    <input type="text" name="SheetRange" placeholder="Set the Cell Range(eg: Sheet1!A1:B)" required>
+                    <input type="text" name="EmailColumn" placeholder="Set the Email Column(eg: B)" required>
+
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea placeholder="Body" name="body" required rows="5"></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+                <div id="resultMessage"></div>
+            </div> -->
+
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/projectScript.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/baseScript.js') }}"></script>
+</body>
+
+</html>

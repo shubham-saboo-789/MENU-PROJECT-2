@@ -1,0 +1,204 @@
+.section3 {
+    /* background: #3491a1; */
+    width: calc(100% - 10rem);
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10rem;
+    /* padding: 0 3rem; */
+}
+
+.section4{
+    width: calc(100% - 10rem);
+    margin-left: 10rem;
+    /* background: #3491a1; */
+    padding-top: 14rem;
+    padding-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section4 h1{
+    color: white;
+    font-size: 10rem;
+    font-weight: 700;
+}
+
+.cards {
+    background: #f9f9f9; /* Light background color for the form */
+    width: 40rem;
+    min-height: 47.08rem;
+    border-radius: 2.4rem;
+    margin: 2.4rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cardImg {
+    background: #000;
+    height: 38rem;
+    border-radius: 2rem;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.cardInfo {
+    margin: 1rem 1.5rem;
+    overflow: hidden;
+}
+.cardTitle{
+    font-size: 2rem;
+    font-weight: 700;
+}
+.cardDesc{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* .cardForm {
+    display: none;
+    flex-direction: column;
+    margin: 10px;
+}
+.cardForm input{
+    border: none;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 5px;
+    outline: none;
+    border-bottom: 2px solid black;
+}
+
+.cardForm textarea{
+    resize: none;
+    border: none;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 5px;
+    outline: none;
+    border-bottom: 2px solid black;
+}
+
+.cardForm button{
+
+    background:blue;
+    color: white;
+
+    padding: 0;
+    margin: 5px;
+
+    height: 40px;
+    border-radius: 20px;
+
+} */
+
+
+
+
+
+
+/* Form Container */
+.cardForm {
+    display: none; /* Use flexbox for better alignment */
+    flex-direction: column;
+    margin: 0 auto; /* Center form horizontally */
+    max-width: 600px; /* Set a maximum width for better responsiveness */
+    padding: 0px 1.5rem ; /* Reduced padding */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Form Inputs */
+.cardForm input,
+.cardForm textarea {
+    resize: none;
+    border: none;
+    background: #fff; /* White background for inputs and textarea */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow for inputs */
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+    border-radius: 0.8rem; /* Rounded corners for inputs */
+    border: 1px solid #ddd; /* Light border for inputs */
+    font-size: 2rem; /* Slightly smaller font size for a slim look */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+/* Focus effect for inputs and textarea */
+.cardForm input:focus,
+.cardForm textarea:focus {
+    border-color: #007BFF; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.2); /* Light focus ring */
+}
+
+/* Base styling for the button */
+.cardForm button {
+    background: #007BFF; /* A modern blue color */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem; /* Reduced padding for a slimmer look */
+    margin: 0.8rem 0;
+    height: auto;
+    border-radius: 2rem; /* Slightly rounded corners */
+    font-size: 1.4rem; /* Slightly smaller font size */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+/* Hover effect */
+.cardForm button:hover {
+    background: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slight shadow on hover */
+}
+
+/* Active effect (when button is clicked) */
+.cardForm button:active {
+    background: #003d80; /* Even darker blue on click */
+    transform: scale(0.98); /* Slightly shrink button */
+}
+
+/* Focus effect (when button is focused) */
+.cardForm button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5); /* Custom focus ring */
+}
+
+/* Disabled state */
+.cardForm button:disabled {
+    background: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* Result div styling */
+.cardForm #p1_result {
+    margin-top: 15px;
+    font-size: 2rem; /* Slightly smaller font size */
+    color: #333; /* Dark text color for result */
+}
+
+
+
+
+.cards.expanded .cardForm {
+    display: flex;
+}
+.cardImg{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#card1 .cardImg video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover; /* Cover the container and crop if necessary */
+    object-position: center; /* Center the video */
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record and Post Video</title>
+    <style>
+        #video {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Record and Post Video</h1>
+    <video id="video" autoplay></video>
+    <button id="record-btn">Start Recording</button>
+    <button id="stop-btn" disabled>Stop Recording</button>
+    <button id="post-btn" disabled>Post Video</button>
+
+    <script>
+        const video = document.getElementById('video');
+        const recordBtn = document.getElementById('record-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const postBtn = document.getElementById('post-btn');
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        // Get access to camera and microphone
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                video.srcObject = stream;
+                mediaRecorder = new MediaRecorder(stream);
+
+                // Save recorded data
+                mediaRecorder.ondataavailable = event => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                // After recording is stopped
+                mediaRecorder.onstop = () => {
+                    const videoBlob = new Blob(recordedChunks, { type: 'video/mp4' });
+                    postBtn.disabled = false;
+
+                    // Post the video when the button is clicked
+                    postBtn.onclick = () => {
+                        uploadVideo(videoBlob);
+                    };
+                };
+
+                // Start recording
+                recordBtn.onclick = () => {
+                    mediaRecorder.start();
+                    recordBtn.disabled = true;
+                    stopBtn.disabled = false;
+                };
+
+                // Stop recording
+                stopBtn.onclick = () => {
+                    mediaRecorder.stop();
+                    recordBtn.disabled = false;
+                    stopBtn.disabled = true;
+                };
+            })
+            .catch(error => {
+                console.error('Error accessing camera or microphone:', error);
+            });
+
+        // Upload video to the server
+        function uploadVideo(blob) {
+            const formData = new FormData();
+            formData.append('video', blob, 'video.mp4');
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Video uploaded successfully:', data);
+                })
+                .catch(error => {
+                    console.error('Error uploading video:', error);
+                });
+        }
+
+    </script>
+</body>
+
+</html>

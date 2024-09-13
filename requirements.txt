@@ -1,0 +1,9 @@
+twilio==7.16.2
+googlesearch-python==1.1.0
+geocoder==1.38.1
+pyttsx3==2.90
+pyvolume==1.0.1
+google-auth==2.23.4
+google-auth-oauthlib==1.0.0
+google-auth-httplib2==0.1.0
+google-api-python-client==2.97.0

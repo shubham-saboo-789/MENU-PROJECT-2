@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shubham Saboo</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/baseStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projectsStyle.css') }}">
+</head>
+
+<body>
+    <img src="{{ url_for('static', filename='img/menu.png') }}" alt="menu button" id="menu-icon">
+
+    <nav class="top-nav" id="menuBox">
+        <ul>
+            <li><a href="/">About me</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+        <a href="#contactMe">
+            <button type="button">Contact Me</button>
+        </a>
+    </nav>
+
+    <div class="side-nav">
+        <a href="/">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="company logo" class="logo" id="side-navLogo">
+        </a>
+        <a href="/projects" id="side-navDesc">SHUBHAM SABOO</a>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <div class="header">
+            <div class="text-box">
+                <p>&nbsp; I'm</p><br>
+                <h1>Shubham Saboo</h1>
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="arrow">
+                </div>
+            </div>
+        </div>
+
+        <div class="slides slide1">
+            <img src="{{ url_for('static', filename='img/478-computer-display-gradient.gif') }}" alt="a picture"
+                class="hidden">
+            <h2 class="hidden">I'm a web Designer.</h2>
+        </div>
+
+        <div class="slides slide2">
+            <img src="{{ url_for('static', filename='img/1315-computer-mouse-gradient.gif') }}" alt="a picture"
+                class="hidden">
+            <h2 class="hidden">I develop web and mobile apps.</h2>
+        </div>
+
+        <div class="slides slide3" id="contactMe">
+            <img src="{{ url_for('static', filename='img/1141-email-gradient.gif') }}" alt="a picture" class="hidden">
+            <div class="slide3-text">
+                <h2 class="hidden">Contact me</h2>
+                <h3 class="hidden">&nbsp;shubhamsaboo789@gmail.com.</h3>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/baseScript.js') }}"></script>
+</body>
+
+</html>
