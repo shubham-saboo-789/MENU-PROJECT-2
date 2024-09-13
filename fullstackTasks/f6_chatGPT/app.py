@@ -14,7 +14,7 @@ def index():
 
 
 def generate_text(prompt):
-    genai.configure(api_key="AIzaSyAQajW6ZcLsC5ch6EPsiBEnVpgFUhtHl1g")
+    genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
     model = genai.GenerativeModel('gemini-1.5-flash')
     try:
         response = model.generate_content(prompt)
