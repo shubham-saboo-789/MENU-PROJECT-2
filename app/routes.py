@@ -6,6 +6,8 @@ import os
 # sys.path.append(os.path.abspath('/pythonTasks'))
 # import p1_mail
 from pythonTasks.p1_mail import mail_api
+from pythonTasks.p2_sms import sms_api
+
 
 
 @app.route('/')
@@ -28,6 +30,20 @@ def p1_mail():
     try:
         mail_api(from_email, from_email_password, to_email, subject, body)
         return jsonify({'status': 'success', 'message': 'Email sent successfully!'}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+    
+@app.route('/p2_sms', methods=["POST"])
+def p2_sms():
+    account_sid=request.json['p2_account_sid']
+    auth_token=request.json['p2_auth_token']
+    twilio_phone_no=request.json['p2_twilio_no']
+    number=request.json['p2_receivers_no']
+    message=request.json['p2_message']
+    
+    try:
+        sms_api(account_sid,auth_token,twilio_phone_no,number, message)
+        return jsonify({'status': 'success', 'message': 'Sms sent successfully!'}), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 

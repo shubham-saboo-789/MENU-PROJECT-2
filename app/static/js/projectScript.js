@@ -55,3 +55,33 @@ function p1_mail(e){
     }
     xhr.send(JSON.stringify(param));
 }
+
+document.getElementById('p2_form').addEventListener('submit',p2_sms)
+function p2_sms(e){
+    e.preventDefault();
+    var p2_account_sid=document.getElementById("p2_account_sid").value;
+    var p2_auth_token=document.getElementById("p2_auth_token").value;
+    var p2_twilio_no=document.getElementById("p2_twilio_no").value;
+    var p2_receivers_no=document.getElementById("p2_receivers_no").value;
+    var p2_message=document.getElementById("p2_message").value;
+    
+    var param={
+        'p2_account_sid':p2_account_sid,
+        'p2_auth_token':p2_auth_token,
+        'p2_twilio_no':p2_twilio_no,
+        'p2_receivers_no':p2_receivers_no,
+        'p2_message':p2_message
+    }
+    
+    var xhr=new XMLHttpRequest();
+    
+    xhr.open('post','../p2_sms',true);
+    
+    xhr.setRequestHeader('Content-type', 'application/json');
+    
+    xhr.onload=function(){
+        console.log("sms reached till onload");
+        document.getElementById('p2_result').innerHTML=this.responseText;
+    }
+    xhr.send(JSON.stringify(param));
+}
