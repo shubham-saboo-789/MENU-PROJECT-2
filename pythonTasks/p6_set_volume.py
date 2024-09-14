@@ -1,4 +1,9 @@
 import pyvolume
 
-per = int(input("Enter the volume percentage : "))
-pyvolume.custom(percent=per)
+
+def volume_api(per):
+    per_int=int(per)
+    pyvolume.custom(percent=per_int)
+
+
+# volume_api("10

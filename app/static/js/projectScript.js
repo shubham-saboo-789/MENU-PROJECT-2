@@ -124,3 +124,76 @@ function p4_find_geoLocation(e){
     }
     xhr.send();
 }
+
+
+document.getElementById('p5_form').addEventListener('submit',p5_text_to_speech)
+function p5_text_to_speech(e){
+    e.preventDefault();
+    var p5_text=document.getElementById("p5_text").value;
+    
+    var param={
+        'p5_text':p5_text
+    }
+    
+    var xhr=new XMLHttpRequest();
+    
+    xhr.open('post','../p5_text_to_speech',true);
+    
+    xhr.setRequestHeader('Content-type', 'application/json');
+    
+    xhr.onload=function(){
+        console.log("query reached till onload");
+        document.getElementById('p5_result').innerHTML=this.responseText;
+    }
+    xhr.send(JSON.stringify(param));
+}
+
+document.getElementById('p6_form').addEventListener('submit',p6_set_volume)
+function p6_set_volume(e){
+    e.preventDefault();
+    var p6_per=document.getElementById("p6_per").value;
+    
+    var param={
+        'p6_per':p6_per
+    }
+    
+    var xhr=new XMLHttpRequest();
+    
+    xhr.open('post','../p6_set_volume',true);
+    
+    xhr.setRequestHeader('Content-type', 'application/json');
+    
+    xhr.onload=function(){
+        console.log("query reached till onload");
+        document.getElementById('p6_result').innerHTML=this.responseText;
+    }
+    xhr.send(JSON.stringify(param));
+}
+
+document.getElementById('p7_form').addEventListener('submit',p7_sms_phone)
+function p7_sms_phone(e){
+    e.preventDefault();
+    var p7_sendX=document.getElementById("p7_sendX").value;
+    var p7_sendY=document.getElementById("p7_sendY").value;
+    var p7_phone=document.getElementById("p7_phone").value;
+    var p7_body=document.getElementById("p7_body").value;
+    
+    var param={
+        'p7_sendX':p7_sendX,
+        'p7_sendY':p7_sendY,
+        'p7_phone':p7_phone,
+        'p7_body':p7_body
+    }
+    
+    var xhr=new XMLHttpRequest();
+    
+    xhr.open('post','../p7_sms_phone',true);
+    
+    xhr.setRequestHeader('Content-type', 'application/json');
+    
+    xhr.onload=function(){
+        console.log("email reached till onload");
+        document.getElementById('p7_result').innerHTML=this.responseText;
+    }
+    xhr.send(JSON.stringify(param));
+}

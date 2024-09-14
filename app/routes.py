@@ -9,6 +9,9 @@ from pythonTasks.p1_mail import mail_api
 from pythonTasks.p2_sms import sms_api
 from pythonTasks.p3_top5_google import search_query_api
 from pythonTasks.p4_find_geoLocation import get_current_location
+from pythonTasks.p5_text_to_speech import text_speech_api
+from pythonTasks.p6_set_volume import volume_api
+from pythonTasks.p7_sms_phone import send_sms_api
 
 
 
@@ -68,6 +71,42 @@ def p4_find_geoLocation():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
+
+@app.route('/p5_text_to_speech', methods=["POST"])
+def p5_text_to_speech():
+    text=request.json['p5_text']
+    print(f'{text}: reached till route')
+    try:
+        text_speech_api(text)
+        return jsonify({'status': 'success', 'message': 'text to speech successfully!'}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/p6_set_volume', methods=["POST"])
+def p6_set_volume():
+    per=request.json['p6_per']
+    
+    try:
+        volume_api(per)
+        return jsonify({'status': 'success', 'message': 'volume change successfully!'}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/p7_sms_phone', methods=["POST"])
+def p7_sms_phone():
+    sendX=request.json['p7_sendX']
+    sendY=request.json['p7_sendY']
+    phone_number=request.json['p7_phone']
+    message=request.json['p7_body']
+    
+    try:
+        send_sms_api(sendX,sendY, phone_number, message)
+        return jsonify({'status': 'success', 'message': 'Sms sent successfully!'}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+        
 @app.errorhandler(404)
 def page_not_found(e):
     return "File not found", 404

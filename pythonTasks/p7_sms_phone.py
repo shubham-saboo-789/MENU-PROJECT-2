@@ -7,19 +7,25 @@ def is_device_connected():
     return "device" in result
 
 
-def send_sms(phone_number, message):
+def send_sms_api(sendX,sendY, phone_number, message):
     if not is_device_connected():
         print("Error: No ADB device connected. Please connect your device and try again.")
-        return
+        return "Error: No ADB device connected. Please connect your device and try again."
     
     # these commands are specific to your phone specifications, it may vary for your use case
     send_command = f'adb shell am start -a android.intent.action.SENDTO -d sms:{phone_number}'
     message_command = f'adb shell input text "{message}"'
-    send_enter_command = 'adb shell input tap 980 1400'  # Coordinates for the send button (may vary)
+    send_enter_command = 'adb shell input tap {sendX} {sendY}'  # Coordinates for the send button (may vary)
     
     os.system(send_command)
     os.system(message_command)
     os.system(send_enter_command)
+
+
+def send_sms(phone_number, message):
+    sendX=980
+    sendY=1400
+    send_sms_api(sendX,sendY, phone_number, message)
 
 
 def sms_phone_data():

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Shubham Saboo</title>
-    
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/baseStyle.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/projectsStyle.css') }}">
 </head>
@@ -62,12 +62,13 @@ Create a function to Send bulk email using python. -->
 
                 <form class="cardForm" id="p1_form">
                     <input type="email" id="p1_senderEmail" placeholder="Senders Email" required>
-                    <input type="password" id="p1_senderEmailPassword" placeholder="Senders Email Password (app password if 2F auth enabled)" required>
+                    <input type="password" id="p1_senderEmailPassword"
+                        placeholder="Senders Email Password (app password if 2F auth enabled)" required>
 
                     <input type="email" id="p1_receiverEmail" placeholder="Receivers Email" required>
                     <input type="text" id="p1_subject" placeholder="Subject" required>
                     <textarea placeholder="Body" id="p1_body" required rows="5"></textarea>
-                    
+
                     <button type="submit">Send Email</button>
                     <div id="p1_result"></div>
 
@@ -76,29 +77,33 @@ Create a function to Send bulk email using python. -->
 
             <div class="cards" id="card2">
                 <div class="cardImg" onclick="toggleCard(this)">
-                    
+
                 </div>
                 <div class="cardInfo">
                     <p class="cardTitle">Send SMS</p>
                     <p class="cardDesc">Send message using Python code</p>
                 </div>
                 <form class="cardForm" id="p2_form">
-                    <input type="password" id="p2_account_sid" name="TWILIO_ACCOUNT_SID" placeholder="TWILIO_ACCOUNT_SID" required>
-                    <input type="password" id="p2_auth_token" name="TWILIO_AUTH_TOKEN" placeholder="TWILIO_AUTH_TOKEN" required>
-                    <input type="tel" id="p2_twilio_no" name="TWILIO_PHONE_NUMBER" placeholder="TWILIO_PHONE_NUMBER" required>
+                    <input type="password" id="p2_account_sid" name="TWILIO_ACCOUNT_SID"
+                        placeholder="TWILIO_ACCOUNT_SID" required>
+                    <input type="password" id="p2_auth_token" name="TWILIO_AUTH_TOKEN" placeholder="TWILIO_AUTH_TOKEN"
+                        required>
+                    <input type="tel" id="p2_twilio_no" name="TWILIO_PHONE_NUMBER" placeholder="TWILIO_PHONE_NUMBER"
+                        required>
 
-                    <input type="tel" id="p2_receivers_no" name="phone" placeholder="Receivers no. (with country code)" required>
+                    <input type="tel" id="p2_receivers_no" name="phone" placeholder="Receivers no. (with country code)"
+                        required>
                     <textarea id="p2_message" placeholder="Message" name="body" required rows="5"></textarea>
-                    
+
                     <button type="submit">Send</button>
                     <div id="p2_result"></div>
                 </form>
             </div>
-            
-            
+
+
             <div class="cards" id="card3">
                 <div class="cardImg" onclick="toggleCard(this)">
-                    
+
                 </div>
                 <div class="cardInfo">
                     <p class="cardTitle">Search Google</p>
@@ -107,14 +112,14 @@ Create a function to Send bulk email using python. -->
                 <form class="cardForm" id="p3_form">
                     <input type="text" id="p3_query" placeholder="Search" required>
                     <button type="submit">Search</button>
+                    <div id="p3_result"></div>
                 </form>
-                <div id="p3_result"></div>
             </div>
-            
-            
+
+
             <div class="cards" id="card4">
                 <div class="cardImg" onclick="toggleCard(this)">
-                    
+
                 </div>
                 <div class="cardInfo">
                     <p class="cardTitle">Find Geo coordinates</p>
@@ -124,14 +129,14 @@ Create a function to Send bulk email using python. -->
                 </div>
                 <form class="cardForm" id="p4_form">
                     <button type="submit">Find</button>
+                    <div id="p4_result"></div>
                 </form>
-                <div id="p4_result"></div> 
             </div>
-            
-            
+
+
             <div class="cards" id="card5">
                 <div class="cardImg" onclick="toggleCard(this)">
-                    
+
                 </div>
                 <div class="cardInfo">
                     <p class="cardTitle">Text to audio</p>
@@ -139,16 +144,17 @@ Create a function to Send bulk email using python. -->
                         Convert text-to-audio using the python code
                     </p>
                 </div>
-                <form class="cardForm">
-                    <textarea placeholder="Text" name="text" required rows="5"></textarea>
+                <form class="cardForm" id="p5_form">
+                    <textarea id="p5_text" placeholder="Text" name="text" required rows="5"></textarea>
                     <button type="submit">Convert</button>
+                    <div id="p5_result"></div>
                 </form>
             </div>
-            
-            
+
+
             <div class="cards" id="card6">
                 <div class="cardImg" onclick="toggleCard(this)">
-                    
+
                 </div>
                 <div class="cardInfo">
                     <p class="cardTitle">control Volume</p>
@@ -156,17 +162,17 @@ Create a function to Send bulk email using python. -->
                         Control volume of you laptop using python.
                     </p>
                 </div>
-                <form class="cardForm">
-                    <input type="range" name="volume" min="0" max="101" />
+                <form class="cardForm" id="p6_form">
+                    <input id="p6_per" type="range" name="volume" min="0" max="101" />
                     <button type="submit">Set Volume</button>
+                    <div id="p6_result"></div>
                 </form>
             </div>
-            
-            <!-- 
-            
+
+
             <div class="cards" id="card7">
                 <div class="cardImg" onclick="toggleCard(this)">
-     
+
                 </div>
                 <div class="cardInfo">
                     <p class="cardTitle">Send SMS</p>
@@ -174,26 +180,23 @@ Create a function to Send bulk email using python. -->
                         Connect to your mobile and send sms from your mobile messaging app using python.
                     </p>
                 </div>
-                <form class="cardForm">
-                    <input type="text" name="IP" placeholder="You Mobile Public IP" required>
-                    <input type="text" name="isADB" placeholder="have you setup your ADB (y/n)" required>
-                    <input type="number" name="sendX" placeholder="Enter the X co-ordinate of Send Button">
-                    <input type="number" name="sendY" placeholder="Enter the Y co-ordinate of Send Button">
+                <form class="cardForm" id="p7_form">
+                    <p>connect your mobile with usb debugging on and ADB setup in your mobile</p>
+                    <input type="number" id="p7_sendX" placeholder="Enter the X co-ordinate of Send Button" required value="980">
+                    <input type="number" id="p7_sendY" placeholder="Enter the Y co-ordinate of Send Button" required value="1400">
 
-                    <hr
-                        style="height:3px;border-width:0;color:rgb(170, 170, 170);border-radius: 1.5px;margin-top: 2rem;margin-bottom: 2rem;">
-
-                    <input type="tel" name="phone" placeholder="Receivers Phone no. (with country code)" required>
-                    <textarea placeholder="Message" name="body" required rows="5"></textarea>
+                    <input type="tel" id="p7_phone" placeholder="Receivers Phone no. (with country code)" required>
+                    <textarea placeholder="Message" id="p7_body" required rows="5"></textarea>
 
                     <button type="submit">Send</button>
+                    <div id="p7_result"></div>
                 </form>
             </div>
 
 
             <div class="cards" id="card8">
                 <div class="cardImg" onclick="toggleCard(this)">
-        
+
                 </div>
                 <div class="cardInfo">
                     <p class="cardTitle">Send Bulk Email</p>
@@ -221,10 +224,107 @@ Create a function to Send bulk email using python. -->
                     <textarea placeholder="Body" name="body" required rows="5"></textarea>
 
                     <button type="submit">Send</button>
+                    <div id="resultMessage"></div>
                 </form>
-                <div id="resultMessage"></div>
-            </div> -->
+            </div>
+            <div class="cards" id="card9">
+                <div class="cardImg" onclick="toggleCard(this)">
 
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                    <div></div>
+                </form>
+            </div>
+            <div class="cards" id="card10">
+                <div class="cardImg" onclick="toggleCard(this)">
+
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                    <div></div>
+                </form>
+            </div>
+            <div class="cards" id="card11">
+                <div class="cardImg" onclick="toggleCard(this)">
+
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                    <div></div>
+                </form>
+            </div>
+            <div class="cards" id="car12">
+                <div class="cardImg" onclick="toggleCard(this)">
+
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                    <div></div>
+                </form>
+            </div>
+            <div class="cards" id="car12">
+                <div class="cardImg" onclick="toggleCard(this)">
+
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                    <div></div>
+                </form>
+            </div>
+            <div class="cards" id="car12">
+                <div class="cardImg" onclick="toggleCard(this)">
+
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                    <div></div>
+                </form>
+            </div>
+            <div class="cards" id="car12">
+                <div class="cardImg" onclick="toggleCard(this)">
+
+                </div>
+                <div class="cardInfo">
+                    <p class="cardTitle">Search Google</p>
+                    <p class="cardDesc">Scrap top5 search results from google using the python code</p>
+                </div>
+                <form class="cardForm">
+                    <input type="text" placeholder="Search" required>
+                    <button type="submit">Search</button>
+                    <div></div>
+                </form>
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/projectScript.js') }}"></script>
