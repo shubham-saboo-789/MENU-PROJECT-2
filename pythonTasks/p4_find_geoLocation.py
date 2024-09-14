@@ -15,11 +15,11 @@ def get_coordinates_from_address(address):
         return location.latlng
     else:
         return None
-    
-lat, lng, add=get_current_location()
-print(lat)
-print(lng)
-print(add)
+ 
+# lat, lng, add=get_current_location()
+# print(lat)
+# print(lng)
+# print(add)
 
 # print(get_coordinates_from_address(add))
 

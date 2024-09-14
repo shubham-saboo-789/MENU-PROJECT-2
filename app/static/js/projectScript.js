@@ -107,3 +107,20 @@ function p3_top5_google(e){
     }
     xhr.send(JSON.stringify(param));
 }
+
+document.getElementById('p4_form').addEventListener('submit',p4_find_geoLocation)
+function p4_find_geoLocation(e){
+    e.preventDefault();
+    
+    var xhr=new XMLHttpRequest();
+    
+    xhr.open('post','../p4_find_geoLocation',true);
+    
+    xhr.setRequestHeader('Content-type', 'application/json');
+    
+    xhr.onload=function(){
+        console.log("post request reached till onload");
+        document.getElementById('p4_result').innerHTML=this.responseText;
+    }
+    xhr.send();
+}

@@ -8,6 +8,7 @@ import os
 from pythonTasks.p1_mail import mail_api
 from pythonTasks.p2_sms import sms_api
 from pythonTasks.p3_top5_google import search_query_api
+from pythonTasks.p4_find_geoLocation import get_current_location
 
 
 
@@ -56,6 +57,14 @@ def p3_top5_google():
     try:
         res=search_query_api(query)
         return jsonify({'status': 'success', 'message': res}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+@app.route('/p4_find_geoLocation', methods=["POST"])
+def p4_find_geoLocation():    
+    try:
+        lat, lng, add=get_current_location()
+        return jsonify({'status': 'success', 'message': {'latitude':lat,'longitude':lng,'address':add}}), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
