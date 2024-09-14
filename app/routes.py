@@ -7,6 +7,7 @@ import os
 # import p1_mail
 from pythonTasks.p1_mail import mail_api
 from pythonTasks.p2_sms import sms_api
+from pythonTasks.p3_top5_google import search_query_api
 
 
 
@@ -47,6 +48,16 @@ def p2_sms():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
+
+@app.route('/p3_top5_google', methods=["POST"])
+def p3_top5_google():
+    query=request.json['p3_query']
+    
+    try:
+        res=search_query_api(query)
+        return jsonify({'status': 'success', 'message': res}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 @app.errorhandler(404)
 def page_not_found(e):

@@ -85,3 +85,25 @@ function p2_sms(e){
     }
     xhr.send(JSON.stringify(param));
 }
+
+document.getElementById('p3_form').addEventListener('submit',p3_top5_google)
+function p3_top5_google(e){
+    e.preventDefault();
+    var p3_query=document.getElementById("p3_query").value;
+    
+    var param={
+        'p3_query':p3_query
+    }
+    
+    var xhr=new XMLHttpRequest();
+    
+    xhr.open('post','../p3_top5_google',true);
+    
+    xhr.setRequestHeader('Content-type', 'application/json');
+    
+    xhr.onload=function(){
+        console.log("query reached till onload");
+        document.getElementById('p3_result').innerHTML=this.responseText;
+    }
+    xhr.send(JSON.stringify(param));
+}
