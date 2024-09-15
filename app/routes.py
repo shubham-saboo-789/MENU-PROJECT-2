@@ -100,13 +100,12 @@ def p7_sms_phone():
     sendY=request.json['p7_sendY']
     phone_number=request.json['p7_phone']
     message=request.json['p7_body']
-    
     try:
         send_sms_api(sendX,sendY, phone_number, message)
         return jsonify({'status': 'success', 'message': 'Sms sent successfully!'}), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
-        
+
 @app.errorhandler(404)
 def page_not_found(e):
     return "File not found", 404
